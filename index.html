@@ -7,147 +7,152 @@
 
     <style>
 
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        background-image: url("images/background.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        min-height: 100vh;
-        margin: 0;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-    }
-
-    .container {
-        width: 45%;
-        max-width: 700px;
-        padding: 20px;
-        margin: 50px auto;
-        border: 2px solid rgb(242, 241, 241);
-        border-radius: 20px;
-        background-color: white;
-        box-shadow: 0 0 15px rgba(55, 154, 230, 0.8);
-    }
-
-    .searchpanel {
-        width: 100%;
-        border: 2px solid black;
-        border-radius: 40px;
-        padding: 5px;
-        display: flex;
-    }
-
-    #searchpanel {
-        flex: 1;
-        min-width: 0;
-        padding: 12px 20px;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        background: transparent;
-    }
-
-    .searchbutton {
-        padding: 10px 20px;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .container-results {
-        width: 45%;
-        max-width: 700px;
-        padding: 20px;
-        margin: 20px auto;
-        border: 2px solid rgb(242, 241, 241);
-        border-radius: 20px;
-        background-color: white;
-        box-shadow: 0 0 15px rgba(55, 154, 230, 0.8);
-    }
-
-    .result {
-        font-size: 30px;
-        margin-bottom: 15px;
-    }
-
-    .course_button,
-    .series_button,
-    .devoir_button {
-        padding: 15px 25px;
-        border: none;
-        font-size: 15px;
-        cursor: pointer;
-        border-radius: 8px;
-        color: white;
-        margin: 5px;
-    }
-
-    .course_button {
-        background-color: rgb(85, 222, 85);
-    }
-
-    .series_button {
-        background-color: rgb(85, 122, 222);
-    }
-
-    .devoir_button {
-        background-color: rgb(222, 149, 85);
-    }
-
-
-    /* PHONE */
-    @media (max-width: 600px) {
+        * {
+            box-sizing: border-box;
+        }
 
         body {
-            padding: 10px;
+            background-image: url("images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            margin: 0;
         }
+
+        /* PC VERSION — same as your original */
 
         .container {
-            width: 100%;
-            margin: 20px auto;
-            padding: 15px;
-        }
-
-        .container-results {
-            width: 100%;
-            margin: 15px auto;
-            padding: 15px;
+            width: 45%;
+            padding: 20px;
+            margin: 50px auto;
+            border: 2px solid rgb(242, 241, 241);
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(55, 154, 230, 0.8);
         }
 
         .searchpanel {
-            padding: 3px;
+            width: 100%;
+            border: 2px solid black;
+            border-radius: 40px;
+            padding: 5px;
+            display: flex;
         }
 
         #searchpanel {
-            padding: 12px 15px;
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            outline: none;
             font-size: 16px;
+            background: transparent;
         }
 
         .searchbutton {
-            padding: 10px 12px;
-            font-size: 14px;
+            padding: 10px 25px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .container-results {
+            width: 45%;
+            padding: 20px;
+            margin: 20px auto;
+            border: 2px solid rgb(242, 241, 241);
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(55, 154, 230, 0.8);
         }
 
         .result {
-            font-size: 24px;
+            font-size: 35px;
+            margin-bottom: 15px;
         }
 
-        .course_button,
-        .series_button,
+        .course_button {
+            padding: 20px 80px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            color: white;
+            margin-right: 10px;
+            background-color: rgb(85, 222, 85);
+        }
+
+        .series_button {
+            padding: 20px 80px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            color: white;
+            margin-right: 10px;
+            background-color: rgb(85, 122, 222);
+        }
+
         .devoir_button {
-            width: 100%;
-            margin: 5px 0;
-            padding: 15px;
+            padding: 20px 80px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            color: white;
+            background-color: rgb(222, 149, 85);
         }
-    }
 
-</style>
+
+        /* PHONE VERSION */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                width: 100%;
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .container-results {
+                width: 100%;
+                margin: 15px auto;
+                padding: 15px;
+            }
+
+            .searchpanel {
+                padding: 3px;
+            }
+
+            #searchpanel {
+                padding: 12px 15px;
+                font-size: 16px;
+            }
+
+            .searchbutton {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .result {
+                font-size: 24px;
+            }
+
+            .course_button,
+            .series_button,
+            .devoir_button {
+                width: 100%;
+                margin: 5px 0;
+                padding: 15px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -176,5 +181,7 @@
     </div>
 
     <script src="main.js"></script>
+
 </body>
+
 </html>
