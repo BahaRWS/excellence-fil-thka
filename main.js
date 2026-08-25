@@ -1,7 +1,31 @@
 const resultsContainer = document.getElementById("container-results");
 const input = document.getElementById("searchpanel");
-input.addEventListener("input", async function () {
-    let text = input.value;
+
+let courses = [];
+
+// Load the courses from courses.json
+async function loadCourses() {
+    try {
+        const response = await fetch("courses.json");
+
+        if (!response.ok) {
+            throw new Error("Could not load courses.json");
+        }
+
+        courses = await response.json();
+
+    } catch (error) {
+        console.error("Error loading courses:", error);
+    }
+}
+
+loadCourses();
+
+
+// Search when the user types
+input.addEventListener("input", function () {
+
+    const text = input.value.trim().toLowerCase();
 
     resultsContainer.innerHTML = "";
 
@@ -9,93 +33,71 @@ input.addEventListener("input", async function () {
         return;
     }
 
-    try {
+    const results = courses.filter(function (course) {
 
-        const response = await fetch(
-            "main.php?input=" + encodeURIComponent(text)
-        );
+        return course.name.toLowerCase().includes(text);
 
-        const results = await response.json();
-
-        for (let i = 0; i < results.length; i++) {
-
-            let courseName = results[i].name;
-
-            let result = document.createElement("div");
-
-            result.textContent = courseName;
-            result.className = "result";
-
-            resultsContainer.appendChild(result);
+    });
 
 
-            let course_button = document.createElement("button");
+    // Display the results
+    results.forEach(function (course) {
 
-            course_button.textContent = "Cours";
-            course_button.className = "course_button";
+        // Course name
+        const result = document.createElement("div");
 
-            course_button.addEventListener("click", async function () {
+        result.textContent = course.name;
+        result.className = "result";
 
-                const response = await fetch(
-                    "course.php?course=" +
-                    encodeURIComponent(courseName)
-                );
-
-                const content = await response.text();
-
-                resultsContainer.innerHTML = content;
-
-            });
-
-            resultsContainer.appendChild(course_button);
+        resultsContainer.appendChild(result);
 
 
-            let series_button = document.createElement("button");
+        // Cours button
+        const courseButton = document.createElement("button");
 
-            series_button.textContent = "Series";
-            series_button.className = "series_button";
+        courseButton.textContent = "Cours";
+        courseButton.className = "course_button";
 
-            series_button.addEventListener("click", async function () {
+        courseButton.addEventListener("click", function () {
 
-                const response = await fetch(
-                    "series.php?course=" +
-                    encodeURIComponent(courseName)
-                );
+            window.location.href = "courses/" + course.file;
 
-                const content = await response.text();
+        });
 
-                resultsContainer.innerHTML = content;
-
-            });
-
-            resultsContainer.appendChild(series_button);
+        resultsContainer.appendChild(courseButton);
 
 
-            let devoir_button = document.createElement("button");
+        // Series button
+        const seriesButton = document.createElement("button");
 
-            devoir_button.textContent = "Devoir";
-            devoir_button.className = "devoir_button";
+        seriesButton.textContent = "Series";
+        seriesButton.className = "series_button";
 
-            devoir_button.addEventListener("click", async function () {
+        seriesButton.addEventListener("click", function () {
 
-                const response = await fetch(
-                    "devoir.php?course=" +
-                    encodeURIComponent(courseName)
-                );
+            window.location.href =
+                "series/" + course.file;
 
-                const content = await response.text();
+        });
 
-                resultsContainer.innerHTML = content;
+        resultsContainer.appendChild(seriesButton);
 
-            });
 
-            resultsContainer.appendChild(devoir_button);
-        }
+        // Devoir button
+        const devoirButton = document.createElement("button");
 
-    } catch (error) {
+        devoirButton.textContent = "Devoir";
+        devoirButton.className = "devoir_button";
 
-        console.error("Error:", error);
+        devoirButton.addEventListener("click", function () {
 
-    }
+            window.location.href =
+                "devoirs/" + course.file;
+
+        });
+
+        resultsContainer.appendChild(devoirButton);
+
+    });
 
 });
