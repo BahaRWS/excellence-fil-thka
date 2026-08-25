@@ -1,8 +1,0 @@
-[
-    { "name": "Suite", "file": "suite.html" },
-    { "name": "Suite géométrique", "file": "suite-geometrique.html" },
-    { "name": "Fonctions", "file": "fonctions.html" },
-    { "name": "Probabilités", "file": "probabilites.html" },
-    { "name": "Dérivée", "file": "derivee.html" },
-    { "name": "Intégrale", "file": "integrale.html" }
-]
